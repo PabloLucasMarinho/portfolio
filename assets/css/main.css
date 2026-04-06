@@ -36,6 +36,7 @@ body {
   line-height: 1.7;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -411,7 +412,7 @@ img {
 =========================== */
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 24px;
 }
 
@@ -525,7 +526,7 @@ img {
   padding: 20px 24px;
   transition: all var(--transition);
   flex: 1;
-  min-width: 260px;
+  min-width: min(260px, 100%);
 }
 
 .contact-card:hover {
