@@ -9,14 +9,16 @@ const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.navbar__links');
 
 navToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
   navToggle.classList.toggle('open');
-  navLinks.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     navToggle.classList.remove('open');
     navLinks.classList.remove('open');
+    document.body.style.overflow = '';
   });
 });
 
