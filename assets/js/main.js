@@ -1,41 +1,80 @@
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
+/* ════════════════════════════════════════
+   VAPORWAVE PORTFOLIO — main.js
+════════════════════════════════════════ */
 
-// Mobile menu toggle
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.querySelector('.navbar__links');
+const container  = document.getElementById('snapContainer');
+const sections   = Array.from(document.querySelectorAll('.snap-section'));
+const dots       = Array.from(document.querySelectorAll('.dot-nav__dot'));
 
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  navToggle.classList.toggle('open');
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-});
+let currentIndex = 0;
+let isScrolling  = false;
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navToggle.classList.remove('open');
-    navLinks.classList.remove('open');
-    document.body.style.overflow = '';
+/* ─── Scroll to section by index ─── */
+function scrollToSection(index) {
+  if (index < 0 || index >= sections.length) return;
+  currentIndex = index;
+  sections[index].scrollIntoView({ behavior: 'smooth' });
+  updateDots(index);
+}
+
+window.scrollToSection = scrollToSection;
+
+/* ─── Update active dot ─── */
+function updateDots(index) {
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', i === index);
+  });
+}
+
+/* ─── Dot click navigation ─── */
+dots.forEach((dot) => {
+  dot.addEventListener('click', () => {
+    const target = parseInt(dot.dataset.target, 10);
+    scrollToSection(target);
   });
 });
 
-// Scroll reveal
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.skill-card, .project-card, .highlight-card, .contact-card').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity .5s ease, transform .5s ease';
-  observer.observe(el);
+/* ─── Keyboard navigation ─── */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+    e.preventDefault();
+    scrollToSection(Math.min(currentIndex + 1, sections.length - 1));
+  } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+    e.preventDefault();
+    scrollToSection(Math.max(currentIndex - 1, 0));
+  }
 });
+
+/* ─── Intersection Observer: track active section + reveal cards ─── */
+const sectionObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = parseInt(entry.target.dataset.index, 10);
+        currentIndex = index;
+        updateDots(index);
+      }
+    });
+  },
+  { root: container, threshold: 0.5 }
+);
+
+sections.forEach((section) => sectionObserver.observe(section));
+
+/* ─── Intersection Observer: fade-in reveal cards ─── */
+const cardObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const cards = entry.target.querySelectorAll('.reveal-card');
+        cards.forEach((card, i) => {
+          setTimeout(() => card.classList.add('visible'), i * 80);
+        });
+        cardObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { root: container, threshold: 0.25 }
+);
+
+sections.forEach((section) => cardObserver.observe(section));
