@@ -192,46 +192,119 @@
     <section class="snap-section snap-section--alt" id="projetos" data-index="3">
       <div class="glow-orb orb--cyan" style="left:5%;bottom:20%;top:auto;" aria-hidden="true"></div>
 
-      <div class="section__content">
-        <header class="section__header">
-          <span class="section__label">// PORTFÓLIO</span>
-          <h2 class="section__title">PROJETOS<span class="accent-punct">.</span></h2>
+      <!-- Header dentro do container normal -->
+      <div class="proj-content-header">
+        <header class="proj-header">
+          <div>
+            <span class="section__label">// PORTFÓLIO</span>
+            <h2 class="section__title">PROJETOS<span class="accent-punct">.</span></h2>
+          </div>
+          <span class="proj-counter" id="projCounter">1 / 2</span>
         </header>
+      </div>
 
-        <div class="projects__grid">
-          <article class="project-card reveal-card">
-            <a href="https://github.com/PabloLucasMarinho/multi-service-booking-platform" target="_blank" rel="noopener" class="project-card__img-link">
-              <img
-                src="assets/images/booking-platform.png"
-                alt="Screenshot do Multi-service Booking Platform — dashboard com agendamentos do dia e métricas de faturamento"
-                class="project-card__img"
-              />
-              <div class="project-card__img-overlay">
-                <span>VER NO GITHUB →</span>
-              </div>
-            </a>
-            <div class="project-card__body">
-              <div class="project-card__tags">
-                <span class="tag">PHP</span>
-                <span class="tag">LARAVEL</span>
-                <span class="tag">MYSQL</span>
-              </div>
-              <h3 class="project-card__title">MULTI-SERVICE BOOKING PLATFORM</h3>
-              <p class="project-card__desc">
-                Sistema completo de gestão de agendamentos para negócios de serviços —
-                barbearias, salões e estúdios. Conta com dashboard analítico, controle de
-                clientes e funcionários, catálogo de serviços, promoções com desconto
-                automático, relatórios financeiros e notificações via e-mail e SMS.
-              </p>
-              <a
-                href="https://github.com/PabloLucasMarinho/multi-service-booking-platform"
-                target="_blank"
-                rel="noopener"
-                class="btn btn--outline btn--sm"
-              >VER REPOSITÓRIO →</a>
+      <!-- Slider ocupa largura total do viewport -->
+      <div class="proj-slider" id="projSlider">
+          <button class="proj-arr proj-arr--prev" id="projPrev" aria-label="Projeto anterior">&#8592;</button>
+          <button class="proj-arr proj-arr--next" id="projNext" aria-label="Próximo projeto">&#8594;</button>
+          <div class="proj-track" id="projTrack">
+
+            <!-- ── SLIDE 1: Orbis ── -->
+            <div class="proj-slide">
+              <article class="project-card">
+
+                <div class="carousel" id="carousel-orbis" aria-label="Screenshots do Orbis">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><img src="assets/images/orbis/dashboard.png"    alt="Dashboard" /><span class="carousel__caption">Dashboard</span></div>
+                    <div class="carousel__slide"><img src="assets/images/orbis/clients.png"      alt="Clientes" /><span class="carousel__caption">Clientes</span></div>
+                    <div class="carousel__slide"><img src="assets/images/orbis/clients-show.png" alt="Detalhes do Cliente" /><span class="carousel__caption">Detalhes do Cliente</span></div>
+                    <div class="carousel__slide"><img src="assets/images/orbis/company-show.png" alt="Empresa" /><span class="carousel__caption">Empresa</span></div>
+                    <div class="carousel__slide"><img src="assets/images/orbis/project-show.png" alt="Projeto" /><span class="carousel__caption">Projeto</span></div>
+                    <div class="carousel__slide"><img src="assets/images/orbis/reports.png"      alt="Relatórios" /><span class="carousel__caption">Relatórios</span></div>
+                  </div>
+                  <div class="carousel__tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">LARAVEL</span>
+                    <span class="tag">VUE</span>
+                    <span class="tag">INERTIA.JS</span>
+                    <span class="tag">TAILWIND</span>
+                    <span class="tag tag--private">&#128274; PRIVADO</span>
+                  </div>
+                  <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#8592;</button>
+                  <button class="carousel__btn carousel__btn--next" aria-label="Próximo">&#8594;</button>
+                  <div class="carousel__dots"></div>
+                </div>
+
+                <div class="project-card__body">
+                  <div class="project-card__title-row">
+                    <h3 class="project-card__title">ORBIS</h3>
+                    <button class="info-btn" aria-label="Sobre o projeto" aria-expanded="false"
+                      data-info="Sistema de gestão financeira para freelancers e agências — cadastro de clientes e empresas, controle de projetos com cobrança mensal recorrente, rastreamento de pagamentos com alerta de inadimplência, relatórios financeiros com filtros avançados e geração de recibos em PDF.">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </button>
+                  </div>
+                  <div class="project-card__tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">LARAVEL</span>
+                    <span class="tag">VUE</span>
+                    <span class="tag">INERTIA.JS</span>
+                    <span class="tag">TAILWIND</span>
+                    <span class="tag tag--private">&#128274; PRIVADO</span>
+                  </div>
+                </div>
+
+              </article>
             </div>
-          </article>
-        </div>
+
+            <!-- ── SLIDE 2: Booking Platform ── -->
+            <div class="proj-slide">
+              <article class="project-card">
+
+                <div class="carousel" id="carousel-booking" aria-label="Screenshots do Booking Platform">
+                  <div class="carousel__track">
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/dashboard.png"           alt="Dashboard" /><span class="carousel__caption">Dashboard</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/appointments.png"        alt="Agendamentos" /><span class="carousel__caption">Agendamentos</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/appointment-show.png"    alt="Detalhes do Agendamento" /><span class="carousel__caption">Detalhes do Agendamento</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/calendar.png"            alt="Calendário" /><span class="carousel__caption">Calendário</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/reports-financial.png"   alt="Relatório Financeiro" /><span class="carousel__caption">Relatório Financeiro</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/reports-clients.png"     alt="Relatório de Clientes" /><span class="carousel__caption">Relatório de Clientes</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/reports-operational.png" alt="Relatório Operacional" /><span class="carousel__caption">Relatório Operacional</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/reports-promotions.png"  alt="Relatório de Promoções" /><span class="carousel__caption">Relatório de Promoções</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/company.png"             alt="Empresa" /><span class="carousel__caption">Perfil da Empresa</span></div>
+                    <div class="carousel__slide"><img src="assets/images/booking-platform/settings.png"            alt="Configurações" /><span class="carousel__caption">Configurações</span></div>
+                  </div>
+                  <div class="carousel__tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">LARAVEL</span>
+                    <span class="tag">MYSQL</span>
+                    <span class="tag tag--private">&#128274; PRIVADO</span>
+                  </div>
+                  <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#8592;</button>
+                  <button class="carousel__btn carousel__btn--next" aria-label="Próximo">&#8594;</button>
+                  <div class="carousel__dots"></div>
+                </div>
+
+                <div class="project-card__body">
+                  <div class="project-card__title-row">
+                    <h3 class="project-card__title">MULTI-SERVICE BOOKING PLATFORM</h3>
+                    <button class="info-btn" aria-label="Sobre o projeto" aria-expanded="false"
+                      data-info="Sistema completo de gestão de agendamentos para negócios de serviços — barbearias, salões e estúdios. Conta com dashboard analítico, controle de clientes e funcionários, catálogo de serviços, promoções com desconto automático, relatórios financeiros e notificações via e-mail e SMS.">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                    </button>
+                  </div>
+                  <div class="project-card__tags">
+                    <span class="tag">PHP</span>
+                    <span class="tag">LARAVEL</span>
+                    <span class="tag">MYSQL</span>
+                    <span class="tag tag--private">&#128274; PRIVADO</span>
+                  </div>
+                </div>
+
+              </article>
+            </div>
+            <!-- fim proj-track -->
+          </div>
+        <!-- fim proj-slider -->
       </div>
 
       <span class="section-num" aria-hidden="true">04 / 05</span>
@@ -304,6 +377,36 @@
     </section>
 
   </main>
+
+  <!-- ══════════════════════════════
+       LIGHTBOX
+  ══════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+    <div class="lightbox__header">
+      <span class="lightbox__counter" id="lbCounter">1 / 10</span>
+      <span class="lightbox__caption" id="lbCaption"></span>
+      <button class="lightbox__close" id="lbClose" aria-label="Fechar">✕</button>
+    </div>
+
+    <div class="lightbox__viewport" id="lbViewport">
+      <img class="lightbox__img" id="lbImg" src="" alt="" draggable="false" />
+    </div>
+
+    <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Anterior">&#8592;</button>
+    <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Próximo">&#8594;</button>
+
+    <div class="lightbox__footer">
+      <button class="lightbox__ctrl" id="lbZoomOut" aria-label="Diminuir zoom">−</button>
+      <span class="lightbox__zoom-level" id="lbZoomLevel">100%</span>
+      <button class="lightbox__ctrl" id="lbZoomIn" aria-label="Aumentar zoom">+</button>
+      <button class="lightbox__ctrl lightbox__ctrl--fit" id="lbZoomReset" aria-label="Ajustar à tela" title="Ajustar à tela">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Popup global de info — direto no body para escapar do transform dos slides -->
+  <div id="infoPopup" class="info-popup" role="tooltip"></div>
 
   <script src="assets/js/main.js"></script>
 </body>
